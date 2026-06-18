@@ -1,0 +1,37 @@
+/* Custom Agricultural Theme Colors */
+:root {
+    --primary-green: #2e7d32;
+    --dark-green: #1b5e20;
+    --light-earth: #f1f8e9;
+}
+
+body {
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.bg-dark-green {
+    background-color: var(--dark-green) !important;
+}
+
+.btn-success {
+    background-color: var(--primary-green) !important;
+    border-color: var(--primary-green) !important;
+}
+
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+    color: white;
+    padding: 100px 0;
+}
+
+/* Tableau Responsive Container */
+.tableau-container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    min-height: 600px;
+}

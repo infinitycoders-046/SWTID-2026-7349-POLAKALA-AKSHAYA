@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+
+<h2 class="text-success mb-4">
+Production Dashboard
+</h2>
+
+<div class='tableauPlaceholder' id='viz1781345449880' style='position: relative; margin: 0 auto; max-width: 1280px;'>
+    <noscript>
+        <a href='#'>
+            <img alt='Comprehensive Analysis of Agricultural production of India ( 1997- 2021) ' src='https://public.tableau.com/static/images/9T/9T8H5KF46/1_rss.png' style='border: none' />
+        </a>
+    </noscript>
+    <object class='tableauViz' style='display:none;'>
+        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+        <param name='embed_code_version' value='3' />
+        <param name='path' value='shared&#47;9T8H5KF46' />
+        <param name='toolbar' value='yes' />
+        <param name='static_image' value='https://public.tableau.com/static/images/9T/9T8H5KF46/1.png' />
+        <param name='animate_transition' value='yes' />
+        <param name='display_static_image' value='yes' />
+        <param name='display_spinner' value='yes' />
+        <param name='display_overlay' value='yes' />
+        <param name='display_count' value='yes' />
+        <param name='language' value='en-US' />
+        <param name='filter' value='publish=yes' />
+    </object>
+</div>
+
+<script type='text/javascript'>
+    var divElement = document.getElementById('viz1781345449880');
+    var vizElement = divElement.getElementsByTagName('object')[0];
+
+    // Set boundaries to perfectly target a 1280px display
+    if ( divElement.offsetWidth >= 1280 ) {
+        vizElement.style.width = '1280px';
+        vizElement.style.height = '720px'; // Keeps standard widescreen layout clean
+    } else if ( divElement.offsetWidth > 500 ) {
+        vizElement.style.width = '100%';
+        vizElement.style.height = '720px';
+    } else {
+        vizElement.style.width = '100%';
+        vizElement.style.height = '1377px'; // Keeps original mobile stacked height
+    }
+
+    var scriptElement = document.createElement('script');
+    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+</script>
+
+
+</div>
+
+
+{% endblock %}

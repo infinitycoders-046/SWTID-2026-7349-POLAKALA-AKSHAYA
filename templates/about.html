@@ -1,0 +1,289 @@
+{% extends "base.html" %}
+{% block title %}About — India Crop Production Analysis{% endblock %}
+
+{% block extra_head %}
+<!-- Google Fonts for Typography -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+<style>
+  /* --- Core Layout & Existing Styles --- */
+  .page-hero {
+    background: linear-gradient(120deg, var(--soil) 0%, #5a3e35 100%);
+    padding: 4rem 0 3rem;
+    border-bottom: 3px solid var(--wheat);
+  }
+  .page-hero h1 { font-family: 'Playfair Display', serif; color: #fff; }
+  .page-hero p  { color: rgba(255,255,255,.7); max-width: 560px; }
+
+  .about-section { padding: 4rem 0; }
+
+  .info-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem;
+    height: 100%;
+  }
+  .info-card h5 {
+    font-family: 'Playfair Display', serif;
+    color: var(--soil);
+    margin-bottom: 1rem;
+  }
+  .info-card ul { padding-left: 1.2rem; }
+  .info-card ul li { font-size: .88rem; color: var(--text-muted); margin-bottom: .4rem; }
+
+  /* --- Integrated Advanced 4-Column Team Layout --- */
+  .team-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--soil);
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .team-section-title span { color: #3d6b1a; }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Forces exactly 4 equal columns on desktop */
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  /* Elegant Glassmorphism Cards configured to fit standard page sections */
+  .crop-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 24px 24px 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    overflow: hidden;
+  }
+
+  .crop-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  /* Decorative thematic top indicator tags */
+  .card-1::before { background: linear-gradient(90deg, #5a9e32, #a0cc60); }
+  .card-2::before { background: linear-gradient(90deg, #2e7d9e, #5ec4e0); }
+  .card-3::before { background: linear-gradient(90deg, #c47c20, #f0b040); }
+  .card-4::before { background: linear-gradient(90deg, #7a3a9e, #b878d8); }
+
+  .crop-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(59, 47, 47, 0.12);
+    border-color: rgba(165, 214, 167, 0.6);
+  }
+
+  .card-top-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Unified decorative capsule for structural consistency */
+  .seed-bubbles {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    background: #f1f8e9;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    border: 1px solid rgba(120, 160, 80, 0.15);
+  }
+
+  .bubble {
+    font-size: 1.2rem;
+    transition: transform 0.2s ease;
+  }
+  .crop-card:hover .bubble {
+    transform: scale(1.15);
+  }
+
+  .card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--soil);
+    text-align: center;
+    margin-bottom: 4px;
+  }
+
+  .card-role {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #5a7a40;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .divider {
+    height: 1px;
+    background: rgba(120, 160, 80, 0.18);
+    margin: 0 0 1rem;
+    width: 100%;
+  }
+
+  .card-tagline {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #4a5d3b;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    margin-top: auto; /* Aligns footer elements elegantly if names break onto extra lines */
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 992px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  }
+  @media (max-width: 576px) {
+    .team-grid { grid-template-columns: 1fr; }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <p class="section-eyebrow mb-2">About This Project</p>
+    <h1 class="mb-3">Behind the Harvest Data</h1>
+    <p class="mb-0">
+      An academic deep-dive into India's agricultural output, combining open
+      government datasets with Tableau's visual storytelling power.
+    </p>
+  </div>
+</section>
+
+<!-- OVERVIEW & TIMELINE SECTION -->
+<section class="about-section">
+  <div class="container">
+
+    <!-- Overview & Dataset Details -->
+    <div class="row g-4 mb-5">
+      <div class="col-md-6">
+        <div class="info-card">
+          <h5>📋 Project Overview</h5>
+          <p class="small text-muted" style="line-height:1.7">
+            This project analyses India's agricultural crop production from 1997 to 2023,
+            covering food grains, oilseeds, pulses, commercial crops, and horticulture.
+            Using Tableau, we built interactive dashboards that let users explore production
+            volume, area harvested, and yield per hectare at the state and national level.
+          </p>
+          <p class="small text-muted" style="line-height:1.7; margin:0">
+            The goal is to surface patterns that inform policy, research, and public
+            understanding of food security trends in the world's most populous nation.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="info-card">
+          <h5>🗃️ Dataset Details</h5>
+          <ul>
+            <li>Source: Ministry of Agriculture &amp; Farmers Welfare (MoAFW)</li>
+            <li>Secondary: data.gov.in open data portal</li>
+            <li>Time span: 1997–98 to 2022–23 crop years</li>
+            <li>Coverage: 28 states + 8 Union Territories</li>
+            <li>Crops: 55 crop types across kharif &amp; rabi seasons</li>
+            <li>Metrics: Production (MT), Area (Mha), Yield (Kg/Ha)</li>
+            <li>Format: CSV / Excel, cleaned in Python (pandas)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-5" style="border-color: var(--border);">
+
+    <!-- TEAM SECTION -->
+    <div class="mb-5">
+      <h2 class="team-section-title">Our <span>Farm</span> Team</h2>
+
+      <div class="team-grid">
+
+        <!-- Member 1 -->
+        <div class="crop-card card-1">
+          <div class="card-top-row">
+            <div class="seed-bubbles">
+              <span class="bubble">🌰</span>
+              <span class="bubble">🌿</span>
+              <span class="bubble">🫘</span>
+              <span class="bubble">🌱</span>
+            </div>
+          </div>
+          <h4 class="card-name">Akshaya Polakala</h4>
+          <p class="card-role">Team Lead</p>
+          <div class="divider"></div>
+          <p class="card-tagline">"Healthy soil, healthy harvest."</p>
+        </div>
+
+        <!-- Member 2 -->
+        <div class="crop-card card-2">
+          <div class="card-top-row">
+            <div class="seed-bubbles">
+              <span class="bubble">💦</span>
+              <span class="bubble">🌊</span>
+              <span class="bubble">🫧</span>
+              <span class="bubble">💧</span>
+            </div>
+          </div>
+          <h4 class="card-name">Mamatha Koogati</h4>
+          <p class="card-role">Team Member</p>
+          <div class="divider"></div>
+          <p class="card-tagline">"Every drop counts."</p>
+        </div>
+
+        <!-- Member 3 -->
+        <div class="crop-card card-3">
+          <div class="card-top-row">
+            <div class="seed-bubbles">
+              <span class="bubble">🌾</span>
+              <span class="bubble">🌽</span>
+              <span class="bubble">🌻</span>
+              <span class="bubble">🌾</span>
+            </div>
+          </div>
+          <h4 class="card-name">Bujji Dadireddy</h4>
+          <p class="card-role">Team Member</p>
+          <div class="divider"></div>
+          <p class="card-tagline">"Better seeds, better yields."</p>
+        </div>
+
+        <!-- Member 4 -->
+        <div class="crop-card card-4">
+          <div class="card-top-row">
+            <div class="seed-bubbles">
+              <span class="bubble">🐄</span>
+              <span class="bubble">🐓</span>
+              <span class="bubble">🐑</span>
+              <span class="bubble">🐄</span>
+            </div>
+          </div>
+          <h4 class="card-name">Yamini Chinthakayala</h4>
+          <p class="card-role">Team Member</p>
+          <div class="divider"></div>
+          <p class="card-tagline">"Happy animals, thriving farms."</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}
